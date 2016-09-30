@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Maply</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/geocode/json?address=41653&key=AIzaSyC9uhvHVQaLhZRW8ksdWitiwDiuHxuCJ7U"></script>
+    <script src="Maply.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="Maply.css">
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand"><b>Maply</b></a>
+            </div>
+            <div class="nav navbar-nav navbar-right">
+                <input type="text" id="inputTextZip" placeholder="Input Address" />
+                <a href="#" id="sendZip"><span class="glyphicon glyphicon-plus"></span></a>
+
+            </div>
+        </div>
+    </nav>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="template card" hidden>
+            <div class="col-md-3 card" id="myDiv@@IDNUM@@">
+                <div class="row city">
+                    <span id="location">@@LOCATION@@</span>
+                </div>
+                <div id="Map"></div>
+            </div>
+        </div>
+    </div>
+    </body>
+
+
+</html>
