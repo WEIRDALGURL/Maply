@@ -30,6 +30,8 @@ idNum++;
         map = new google.maps.Map(document.getElementById('Map'), {
             center: {lat: latitude, lng: longitude},
             zoom: 8
+
+
         });
 
 };
