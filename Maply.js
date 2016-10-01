@@ -11,7 +11,7 @@ function lookupLatLong_Complete(result) {
     longitude = result.results[0].geometry.location.lng;
     locationName = result.results[0].address_components[1].long_name + "," +
         result.results[0].address_components[2].short_name;
-        GetMap();
+    GetMap();
 
     console.log("The lat and long is " + latitude + ", " + longitude);
     console.log("The location is " + locationName);
@@ -20,20 +20,28 @@ function lookupLatLong_Complete(result) {
     var template = $(".template").html();
     template = template.replace("@@IDNUM@@", idNum);
     template = template.replace("@@LOCATION@@", locationName);
-    $(".container").append(template);
+    template = template.replace("@@CLOSENUM@@", idNum);
 
-        }
+    $(".container").prepend(template);
 
-idNum++;
-    
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('Map'), {
-            center: {lat: latitude, lng: longitude},
-            zoom: 8
+    idNum++;
+}
 
 
-        });
-
+function initMap() {
+    var myLatlng = new google.maps.LatLng(latitude, longitude);
+    map = new google.maps.Map(document.getElementById('Map'), {
+        center: myLatlng,
+        //{ lat: parseInt(latitude), lng: parseInt(longitude) },
+        zoom: 8
+    });
+    console.log(myLatlng);
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        title: 'You are here!'
+    });
+    marker.setMap(map);
 };
 function GetMap() {
     var GoogleMapUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC3Wjk_vqQdy7KbpXC5ytqTihE6qOWprpM&callback=initMap";
@@ -56,7 +64,7 @@ function lookupLatLong(city, state, zipcode) {
         return;
     }
     console.log("The address: " + address)
-
+    //show the box
     var googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyC9uhvHVQaLhZRW8ksdWitiwDiuHxuCJ7U";
     $.ajax({
         url: googleUrl,
@@ -73,5 +81,8 @@ function lookupWeatherForPostalCode_Click() {
 
 $(function () {
     $("#sendZip").on("click", lookupWeatherForPostalCode_Click);
-
+    $(document).on('click', '.closeBtn', function () {
+        $(this).closest('.card').remove();
+    });
 });
+
